@@ -11,7 +11,6 @@ class Hello extends Thread {
 
 class Pi(var start: Int, var end: Int, var width: Double) extends Runnable {
   var result = .0
-  var k: Double = 1
   var mid:Double = 0
   var height: Double = 0
 
@@ -20,7 +19,7 @@ class Pi(var start: Int, var end: Int, var width: Double) extends Runnable {
       mid = (i + 0.5) * width
       height = 4.0 / (1.0 + mid * mid)
       result += height
-      print(" " + result)
+      print("\n iter:"+i+ " - "+ result+ " \nmid: "+ mid + " height: " + height)
 
     }
     println(Thread.currentThread.getName + " result =" + result + " start " + start + " end " + end)
@@ -36,8 +35,8 @@ object Hello {
     var area = .0
     var width = .0
     var sum = 0.0
-    val num_steps = 100
-    val num_threads = 10
+    val num_steps = 10
+    val num_threads = 2
     val num_values_in_thread = num_steps / num_threads
     var end = num_values_in_thread
     var start = 0
@@ -54,6 +53,6 @@ object Hello {
       sum += p.getResult
     }
     area = width * sum
-    println("Final result: " + sum)
+    println("Final result: " + area)
   }
 }
